@@ -79,6 +79,9 @@ movement$activity <- plyr::revalue(factor(movement$activity, as.character(1:6)),
 # variable for each activity and each subject.
 
 movementTidy <- ddply(movement, .(subject, activity), function(x) colMeans(x[, 1:79]))
+
+# `write.table()` was used due to the requirements of the course project; however, I created a .csv, too
+write.table(movementTidy, "GCD_Course-Project/movement_averages.txt", row.names = FALSE)
 write.csv(movementTidy, "GCD_Course-Project/movement_averages.csv", row.names = TRUE)
 
 # Load and view the data to see if it is tidy (and ballin')
